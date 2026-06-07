@@ -1,0 +1,20 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+
+export async function getStaticPaths() {
+  const cities = await getCollection("services");
+  return cities.map((service) => ({
+    params: { city: service.id.split("/")[0], service: service.id.split("/")[1] },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const { Content } = await render(service);
+---
+
+<Base>
+  <h1>{service.data.title}</h1>
+  <Content />
+</Base>

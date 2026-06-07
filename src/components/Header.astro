@@ -1,0 +1,197 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.png";
+
+import { getCollection } from "astro:content";
+import { getEntry } from "astro:content";
+
+const cities = await getCollection("cities");
+---
+
+<header>
+  <a href="/" style="color: black; text-decoration: none;"
+    ><div class="logo">
+      <Image src={logo} alt="Logo" />
+      <div>
+        <b style="font-size:.75rem;">Alternativa-life</b>
+        <p style="font-size:.75rem; ">Медична служба</p>
+      </div>
+    </div>
+  </a>
+  <div><a href="tel:+380990111111">+380 990 111 111</a></div>
+  <nav>
+    <ul class="nav-list">
+      <li id="sublist-toggle">Філіали <b>˅</b></li>
+      <ul class="sublist">
+        {
+          cities.map((city) => (
+            <li>
+              <a href={city.id}>{city.data.title}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <li>Блог</li>
+      <li>Про нас</li>
+    </ul>
+  </nav>
+  <div class="hamburger">
+    <div></div>
+  </div>
+</header>
+<div class="default-padding"></div>
+
+<style>
+  .default-padding {
+    padding-top: 6rem;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: lightgrey;
+    border-radius: 3px;
+    padding: 0.5rem;
+    position: fixed;
+    margin-top: 0.5rem;
+    height: 5rem;
+    width: 95vw;
+  }
+  .logo {
+    display: flex;
+  }
+  .logo img {
+    height: 4rem;
+    width: 4rem;
+  }
+  .logo div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  nav {
+    display: none;
+    position: absolute; 
+    z-index: 10;
+    top: 6rem;
+    right: 0rem;
+    width: 70vw;
+    min-height: 100vh;
+    background-color: lightgrey;
+    border-radius: 5px;
+  }
+  .nav-list {
+    padding-top: 3rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  .nav-list li a {
+    color: black;
+    text-decoration: none;
+  }
+  .sublist {
+    display: none;
+    list-style: none;
+    cursor: pointer;
+  }
+  .hamburger {
+    margin: 1em;
+    width: 40px;
+  }
+
+  .hamburger:after,
+  .hamburger:before,
+  .hamburger div {
+    background-color: #111;
+    border-radius: 3px;
+    content: "";
+    display: block;
+    height: 5px;
+    margin: 7px 0;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .hamburger:hover:before {
+    transform: translateY(12px) rotate(135deg);
+  }
+
+  .hamburger:hover:after {
+    transform: translateY(-12px) rotate(-135deg);
+  }
+
+  .hamburger:hover div {
+    transform: scale(0);
+  }
+
+  @media (min-width: 750px) {
+    header {
+      margin: auto;
+      max-width: 50%;
+    }
+    .hamburger{
+      display: none;
+    }
+    nav{
+      display:flex;
+      position:static;
+      height: auto;
+      min-height: auto;
+      width: auto;
+      top: auto;
+      right: auto;
+    }
+    .nav-list{
+      flex-direction: row;
+      padding-top:0;
+    }
+    .sublist{
+      position: absolute;
+      top: 3.5rem;
+      width: 10rem;
+      border-radius: 10px;
+      background-color: lightgray;
+    }
+  }
+</style>
+
+<script type="module">
+  const navLinks = document.querySelector("nav");
+  const body = document.querySelector("body");
+  const hamburger = document.querySelector(".hamburger");
+
+  function toggleMenu() {
+    if (navLinks.classList.contains("showMenu")) {
+      navLinks.classList.remove("showMenu");
+      navLinks.style.display = "none";
+
+      body.style.overflow = "auto";
+    } else {
+      navLinks.classList.add("showMenu");
+      navLinks.style.display = "block";
+      body.style.overflow = "hidden";
+    }
+  }
+
+  hamburger.addEventListener("click", toggleMenu);
+
+  const sublistToggle = document.getElementById("sublist-toggle");
+  const sublist = document.querySelector(".sublist");
+
+  function toggleSublist() {
+    if (sublist.classList.contains("open")) {
+      sublist.style.display = "block";
+      sublist.classList.remove("open");
+    } else {
+      sublist.style.display = "none";
+      sublist.classList.add("open");
+    }
+  }
+
+  sublistToggle.addEventListener("click", toggleSublist);
+</script>
