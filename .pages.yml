@@ -13,7 +13,7 @@ content:
   - name: services
     label: Сервисы
     type: collection
-    path: src/content/sevices
+    path: src/content/services
     view:
       fields: [title]
     fields:
