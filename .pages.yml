@@ -1,0 +1,20 @@
+media: 
+    input: public
+    output: /
+content:
+  - name: cities
+    label: Города
+    type: collection
+    path: src/content/cities
+    view:
+      fields: [title]
+    fields:
+      - { name: title, label: Заголовок на странице, type: sting }
+  - name: services
+    label: Сервисы
+    type: collection
+    path: src/content/sevices
+    view:
+      fields: [title]
+    fields:
+      - { name: title, label: Заголовок на странице, type: sting }
