@@ -17,4 +17,4 @@ content:
     view:
       fields: [title]
     fields:
-      - { name: title, label: Заголовок на странице, type: sting }
+      - { name: title, label: Заголовок на странице, type: sting } 
