@@ -6,7 +6,9 @@ content:
     label: Города
     type: collection
     path: src/content/cities
-    filename: true
+    filename: 
+      template: "{slug}.md"
+      field: true
     view:
       fields: [title]
     fields:
@@ -16,7 +18,9 @@ content:
     type: collection
     path: src/content/services
     subfolders: true
-    filename: true
+    filename:
+      template: "{slug}.md"
+      field: true
     view:
       fields: [title]
     fields:
