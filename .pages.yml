@@ -6,7 +6,7 @@ content:
     label: Города
     type: collection
     path: src/content/cities
-    filename:true
+    filename: true
     view:
       fields: [title]
     fields:
