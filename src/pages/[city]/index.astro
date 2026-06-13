@@ -24,7 +24,7 @@ const { Content } = await render(city);
         .filter((service) => service.id.split("/")[0] == city.id)
         .map((service) => (
           <li>
-            <a href={service.id}>{service.data.title}</a>
+            <a href={service.id.split("/")[1]}>{service.data.title}</a>
           </li>
         ))
     }
