@@ -26,7 +26,7 @@ const cities = await getCollection("cities");
         {
           cities.map((city) => (
             <li>
-              <a href={city.id}>{city.data.title}</a>
+              <a href={`/$city.id`}>{city.data.title}</a>
             </li>
           ))
         }
