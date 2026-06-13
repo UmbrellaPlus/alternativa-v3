@@ -1,7 +1,7 @@
 ---
 title: Собственно тестовая статья
 ---
-```markdown
+
 # Markdown syntax guide або Тест
 
 ## Headers Заголовки
@@ -83,6 +83,4 @@ graph TD
 ## Inline code
 
 This web site is using `markedjs/marked`.
-
-```
 
