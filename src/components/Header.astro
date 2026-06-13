@@ -22,11 +22,11 @@ const cities = await getCollection("cities");
   <nav>
     <ul class="nav-list">
       <li id="sublist-toggle">Філіали <b>˅</b></li>
-      <ul class="sublist">
+      <ul class="sublist open">
         {
           cities.map((city) => (
             <li>
-              <a href={`/$city.id`}>{city.data.title}</a>
+              <a href={"/" + city.id}>{city.data.title}</a>
             </li>
           ))
         }
