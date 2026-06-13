@@ -12,7 +12,11 @@ content:
     view:
       fields: [title]
     fields:
-      - { name: title, label: Заголовок на странице, type: sting }
+      - name: title
+        label: Заголовок на странице
+        type: string
+      - name: body
+        type: rich-text
   - name: services
     label: Сервисы
     type: collection
@@ -24,4 +28,8 @@ content:
     view:
       fields: [title]
     fields:
-      - { name: title, label: Заголовок на странице, type: sting }
+      - name: title
+        label: Заголовок на странице
+        type: string
+      - name: body
+        type: rich-text
