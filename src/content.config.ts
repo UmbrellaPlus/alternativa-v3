@@ -13,6 +13,8 @@ const services = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/services" }),
   schema: z.object({
     title: z.string(),
+    created: z.date().optional(),
+    lastmod: z.date().optional()
   }),
 });
 

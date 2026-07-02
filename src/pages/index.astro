@@ -6,11 +6,15 @@ import { getEntry } from "astro:content";
 
 const home = await getEntry('mainPages', 'home')
 
-const { title, hero } = home?.data
+if(!home){
+  return
+}
+
+const frontmatter = home.data
 ---
 
 <Base>
-  <div class="hero"><h1>{title}</h1></div>
-  <div class="banner">{hero.header}</div>
+  <div class="hero"><h1>{frontmatter.title}</h1></div>
+  <div class="banner">{frontmatter.hero.header}</div>
   <Content />
 </Base>

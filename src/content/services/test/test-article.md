@@ -1,5 +1,7 @@
 ---
 title: Собственно тестовая статья
+created: 2026-07-02
+lastmod: 2026-07-02
 ---
 
 # Markdown syntax guide або Тест

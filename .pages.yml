@@ -33,3 +33,7 @@ content:
         type: string
       - name: body
         type: rich-text
+      - name: created
+        type: date
+      - name: lastmod
+        type: date
