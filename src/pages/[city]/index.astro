@@ -7,28 +7,22 @@ export async function getStaticPaths() {
   const cities = await getCollection("cities");
   return cities.map((city) => ({
     params: { city: city.id },
-    props: { city },
+    props: { city: city },
   }));
 }
 
 const services = await getCollection("services");
 
 const { city } = Astro.props;
-const { Content } = await render(city);
 ---
 
 <Base>
   <h1>{city.data.title}</h1>
   <ul>
-    {
-      services
-        .filter((service) => service.id.split("/")[0] == city.id)
-        .map((service) => (
-          <li>
-            <a href={service.id.split("/")[0] + "/" + service.id.split("/")[1]}>{service.data.title}</a>
-          </li>
-        ))
-    }
+    {services.filter((service) => service.id.split("/")[0] == city.id).map(service => (
+      <li>
+        <a href={`/${city.id}/${service.id.split("/")[1]}/`}>{service.data.title}</a>
+      </li>
+    ))}
   </ul>
-  <Content />
 </Base>
