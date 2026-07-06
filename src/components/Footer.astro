@@ -1,10 +1,69 @@
 ---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.png";
 
+import { getCollection } from "astro:content";
+
+const cities = await getCollection("cities");
 ---
+
 <footer>
-    Alternativa footer
+  <div class="footer-menu">
+    <div class="footer-filials-list">
+      <p>Філіали</p>
+      <ul>
+        {
+          cities.map((city) => (
+            <li>
+              <a href={"/" + city.id}>{city.data.title}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="footer-otherPages-list">
+      <ul>
+        <li>Блог</li>
+        <li>Про нас</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-year">
+    <span id="year"></span>
+    <span>Всі права захищені</span>
+  </div>
 </footer>
 
 <style>
-    
+  footer {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    align-items: center;
+  }
+  .footer-menu {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    background-color: lightgray;
+  }
+  .footer-year {
+    margin: 0 auto;
+  }
+    @media (min-width: 750px) {
+        footer{
+            max-width: 50%;
+            margin: auto;
+        }
+        .footer-menu{
+            border-radius: 1rem;
+        }
+    }
 </style>
+
+<script type="module">
+  let year = document.getElementById("year");
+
+  year.innerHTML = new Date().getFullYear();
+</script>

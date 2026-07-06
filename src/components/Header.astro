@@ -1,16 +1,16 @@
 ---
 import { Image } from "astro:assets";
 import logo from "../assets/logo.png";
+import arrowDown from "../assets/arrow.svg"
 
 import { getCollection } from "astro:content";
-import { getEntry } from "astro:content";
 
 const cities = await getCollection("cities");
 ---
 
 <header>
   <a href="/" style="color: black; text-decoration: none;"
-    ><div class="logo">
+    ><div class="header-logo">
       <Image src={logo} alt="Logo" />
       <div>
         <b style="font-size:.75rem;">Alternativa-life</b>
@@ -18,10 +18,10 @@ const cities = await getCollection("cities");
       </div>
     </div>
   </a>
-  <div><a href="tel:+380990111111">+380 990 111 111</a></div>
+  <div class="header-phoneNumber"><a href="tel:+380990111111">+380 990 111 111</a></div>
   <nav>
     <ul class="nav-list">
-      <li id="sublist-toggle">Філіали <b>˅</b></li>
+      <li id="sublist-toggle">Філіали <Image src={arrowDown} alt="arrowDown" id="arrowDown"></li>
       <ul class="sublist open">
         {
           cities.map((city) => (
@@ -53,22 +53,27 @@ const cities = await getCollection("cities");
     border-radius: 3px;
     padding: 0.5rem;
     position: fixed;
-    margin-top: 0.5rem;
     height: 5rem;
     width: 95vw;
+    left:50%;
+    top:0.5rem;
+    transform: translate(-50%, 0%);
   }
-  .logo {
+  .header-logo {
     display: flex;
   }
-  .logo img {
+  .header-logo img {
     height: 4rem;
     width: 4rem;
   }
-  .logo div {
+  .header-logo div {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+  .header-phoneNumber{
+    font-size: .75rem;
   }
   nav {
     display: none;
@@ -127,6 +132,11 @@ const cities = await getCollection("cities");
 
   .hamburger:hover div {
     transform: scale(0);
+  }
+  #arrowDown{
+    display: inline-block;
+    width:1rem;
+    height: 1rem;
   }
 
   @media (min-width: 750px) {
