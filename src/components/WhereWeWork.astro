@@ -1,0 +1,38 @@
+<div class="whereWeWork">
+  <div>
+    <h3>Мережа наркологічних центрів "Альтернатива"</h3><ul>
+      <li>Працюємо у 10 областях України</li>
+      <li>Терміновий виїзд, термінова допомога</li>
+      <li>Виїзд за 15 хвилин</li>
+    </ul>
+  </div>
+  <div class="whereWeWork-image">
+    <img src="src/assets/components/WhereWeWork/ambulance.webp" alt="Карета швидкої допомоги" />
+  </div>
+</div>
+
+<style>
+  .whereWeWork {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    max-width: 95%;
+    margin: 2rem auto;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+  .whereWeWork-image{
+    max-width: 20rem;
+  }
+   .whereWeWork-image img{
+    border-radius: 1rem;
+   }
+  @media (min-width: 968px) {
+    .whereWeWork {
+      max-width: 50%;
+      flex-direction: row;
+    }
+  }
+</style>

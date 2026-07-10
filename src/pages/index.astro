@@ -1,7 +1,11 @@
 ---
 import Base from "../layouts/Base.astro";
-import Content from "../content/mainPages/home.md";
+import Hero from "../components/Hero.astro";
+import Deal from "../components/Deal.astro";
+import Services from "../components/Services.astro";
+import WhereWeWork from "../components/WhereWeWork.astro";
 
+import Content from "../content/mainPages/home.md";
 import { getEntry } from "astro:content";
 
 const home = await getEntry("mainPages", "home");
@@ -14,40 +18,17 @@ const frontmatter = home.data;
 ---
 
 <Base>
-  <div class="hero">
-    <div>
-      <h1>{frontmatter.hero.header}</h1><p>{frontmatter.hero.about}</p>
-    </div>
-    <button>Написати нам в месседжер</button>
-    <button>Зателефонуйте мені терміново</button>
-  </div>
-  <div>
-    <div><p>Анонімно і конфеденційно</p></div>
-    <div><p>Досвідчені лікарі з ліцензіями</p></div>
-    <div><p>Будемо у вас до години</p></div>
-  </div>
-  <div>
-    <img src="" alt="Банер" />
-  </div>
-  <div>
-    <h2>Послуги які ми надаємо</h2>
-    <div>
-      <div><span>Вивід із запою</span><p>Від 1500 грн</p></div><div>
-        <span>Крапельниця від алкоголю</span><p>Від 1500 грн</p>
-      </div><div>
-        <span>Кодування від алкоголізму</span><p>Від 5000 грн</p>
-      </div><div>
-        <span>Наркологічна допомога</span><p>Від 2000 грн</p>
-      </div>
-    </div>
-  </div>
-  <div>
-    <h3>Мережа наркологічних центрів "Альтернатива"</h3><ul>
-      <li>Працюємо у 10 областях України</li>
-      <li>Терміновий виїзд, термінова допомога</li>
-      <li>Виїзд за 15 хвилин</li>
-    </ul>
-    <img src="" alt="Карета швидкої допомоги">
-  </div>
+  <Hero
+    title={frontmatter.hero.header}
+    ,
+    about={frontmatter.hero.about}
+    ,
+    image={frontmatter.hero.image}
+    ,
+    imageText={frontmatter.hero.imageText}
+  />
+  <Deal />
+  <Services />
+  <WhereWeWork />
   <Content />
 </Base>

@@ -1,0 +1,74 @@
+---
+import { Image } from "astro:assets";
+
+const { title, about, image, imageText } = Astro.props;
+---
+
+<div class="hero">
+  <div class="hero-textPart">
+    <div class="hero-title">
+      <h1>{title}</h1>
+      <p><b>{about}</b></p>
+    </div>
+    <div class="hero-statements">
+      <button>Написати нам в месседжер</button>
+      <button>Зателефонуйте мені терміново</button>
+      <div><p>Анонімно і конфеденційно</p></div>
+      <div><p>Досвідчені лікарі з ліцензіями</p></div>
+      <div><p>Будемо у вас до години</p></div>
+      <div><p>Індивідуальний підхід до лікування</p></div>
+    </div>
+  </div>
+  <div class="hero-imagePart">
+    <Image src={image} alt="{imageText}" />
+  </div>
+
+  <style>
+    .hero{
+      width: 95%;
+      margin: auto;
+    }
+    .hero-title {
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-statements {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+      gap: 0.75rem;
+    }
+    .hero-statements div {
+      border: 1px solid grey;
+      border-radius: 0.5rem;
+      padding: .25rem 0;
+    }
+    .hero-imagePart {
+      display: none;
+    }
+    @media (min-width: 968px) {
+      .hero {
+        display: flex;
+        width: 50%;
+      }
+      .hero-textPart {
+        margin-right: 1rem;
+        flex: 3;
+      }
+      .hero-statements {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+      }
+      .hero-imagePart {
+        display: block;
+        flex: 1;
+      }
+      .hero-imagePart img {
+        max-width: 20vw;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 1rem;
+      }
+    }
+  </style>
+</div>

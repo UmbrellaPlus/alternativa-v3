@@ -1,0 +1,12 @@
+h1 {
+  line-height: 2.25rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+button {
+  border-radius: 1rem;
+  border: 1px solid black;
+  padding: 0.5rem;
+  cursor: pointer;
+}

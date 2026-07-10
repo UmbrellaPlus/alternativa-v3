@@ -1,0 +1,25 @@
+<div class="banner">
+  <div>This is banner picture</div>
+  <div>This is banner text</div>
+  <div>This is banner text</div>
+</div>
+
+<style>
+  .banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: grey;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 1rem auto;
+    width: 95%;
+  }
+  @media (min-width: 968px) {
+    .banner {
+      width: 50%;
+      flex-direction: row;
+    }
+  }
+</style>

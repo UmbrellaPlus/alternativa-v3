@@ -20,11 +20,13 @@ const services = defineCollection({
 
 const mainPages = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/mainPages" }),
-  schema: z.object({
+  schema: ({image}) => z.object({
     title: z.string(),
     hero: z.object({
       header: z.string(),
       about: z.string(),
+      image: image(),
+      imageText: z.string()
     }),
   }),
 });
