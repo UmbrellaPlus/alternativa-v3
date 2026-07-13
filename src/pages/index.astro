@@ -3,6 +3,7 @@ import Base from "../layouts/Base.astro";
 import Hero from "../components/Hero.astro";
 import Deal from "../components/Deal.astro";
 import Services from "../components/Services.astro";
+import Carousel from "../components/Carousels/Carousel.astro"
 import WhereWeWork from "../components/WhereWeWork.astro";
 
 import Content from "../content/mainPages/home.md";
@@ -29,6 +30,8 @@ const frontmatter = home.data;
   />
   <Deal />
   <Services />
+  <Carousel />
   <WhereWeWork />
   <Content />
 </Base>
+

@@ -1,0 +1,83 @@
+---
+const slides = [
+  "src/assets/carousels/test carousel/slide-1.webp",
+  "src/assets/carousels/test carousel/slide-2.webp",
+  "src/assets/carousels/test carousel/slide-3.webp",
+  "src/assets/carousels/test carousel/slide-4.webp",
+];
+---
+
+<div class="carousel-container">
+  <h1>Наші лікарі</h1>
+  <div class="embla">
+    <div class="embla__viewport">
+      <div class="embla__container">
+        {
+          slides.map((image) => (
+            <div class="embla__slide">
+              <img src={image} alt="" />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <button class="embla__prev">←</button>
+    <button class="embla__next">→</button>
+  </div>
+</div>
+
+<script>
+  import EmblaCarousel from "embla-carousel";
+
+  const wrapperNode = document.querySelector(".embla");
+  const viewportNode = wrapperNode?.querySelector(".embla__viewport");
+  const prevButtonNode = wrapperNode?.querySelector(".embla__prev");
+  const nextButtonNode = wrapperNode?.querySelector(".embla__next");
+
+  const emblaApi = EmblaCarousel(viewportNode, {
+    loop: true,
+    containScroll: false,
+    align: "center",
+    slidesToScroll: 1,
+  });
+
+  prevButtonNode?.addEventListener("click", () => emblaApi.scrollPrev(), false);
+  nextButtonNode?.addEventListener("click", () => emblaApi.scrollNext(), false);
+</script>
+
+<style>
+  .carousel-container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .embla {
+    overflow: hidden;
+    --slide-spacing: 10px;
+  }
+
+  .embla__container {
+    display: flex;
+    touch-action: pan-y pinch-zoom;
+    margin-left: calc(var(--slide-spacing)-1);
+  }
+
+  .embla__slide {
+    flex: 0 0 70%;
+    min-width: 0;
+    padding-left: var(--slide-spacing);
+  }
+
+  .embla__slide img {
+  }
+  @media (min-width: 750px) {
+    .carousel-container {
+      width: 50%;
+    }
+    .embla__slide {
+      flex: 0 0 40%;
+    }
+  }
+</style>
