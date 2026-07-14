@@ -1,0 +1,13 @@
+---
+import Carousel from "../Carousels/Carousel.astro"
+
+import slide1 from "../../assets/carousels/doctors/slide-1.webp";
+import slide2 from "../../assets/carousels/doctors/slide-2.webp";
+import slide3 from "../../assets/carousels/doctors/slide-3.webp";
+import slide4 from "../../assets/carousels/doctors/slide-4.webp";
+
+
+const slides = [slide1, slide2, slide3, slide4];
+---
+
+<Carousel title="Наші лікарі", {slides}/>

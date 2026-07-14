@@ -1,19 +1,14 @@
 ---
-import slide1 from "../../assets/carousels/test-carousel/slide-1.webp";
-import slide2 from "../../assets/carousels/test-carousel/slide-2.webp";
-import slide3 from "../../assets/carousels/test-carousel/slide-3.webp";
-import slide4 from "../../assets/carousels/test-carousel/slide-4.webp";
-
-const slides = [slide1, slide2, slide3, slide4];
+const { title, slides } = Astro.props;
 ---
 
 <div class="carousel-container">
-  <h1>Наші лікарі</h1>
+  <h1>{title}</h1>
   <div class="embla">
     <div class="embla__viewport">
       <div class="embla__container">
         {
-          slides.map((image) => (
+          slides.map((image: { src: string }) => (
             <div class="embla__slide">
               <img src={image.src} alt="" />
             </div>
@@ -28,24 +23,7 @@ const slides = [slide1, slide2, slide3, slide4];
   </div>
 </div>
 
-<script>
-  import EmblaCarousel from "embla-carousel";
-
-  const wrapperNode = document.querySelector(".embla");
-  const viewportNode = wrapperNode?.querySelector(".embla__viewport");
-  const prevButtonNode = wrapperNode?.querySelector(".embla__prev");
-  const nextButtonNode = wrapperNode?.querySelector(".embla__next");
-
-  const emblaApi = EmblaCarousel(viewportNode, {
-    loop: true,
-    containScroll: false,
-    align: "center",
-    slidesToScroll: 1,
-  });
-
-  prevButtonNode?.addEventListener("click", () => emblaApi.scrollPrev(), false);
-  nextButtonNode?.addEventListener("click", () => emblaApi.scrollNext(), false);
-</script>
+<script src="../../scripts/embla.js"></script>
 
 <style>
   .carousel-container {
@@ -54,6 +32,7 @@ const slides = [slide1, slide2, slide3, slide4];
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 1rem auto;
   }
   .embla {
     overflow: hidden;
@@ -75,10 +54,10 @@ const slides = [slide1, slide2, slide3, slide4];
   .embla__slide img {
   }
 
-  .embla__buttons{
+  .embla__buttons {
     display: flex;
     justify-content: center;
-    gap:1rem;
+    gap: 1rem;
     margin-top: 1rem;
   }
   @media (min-width: 750px) {

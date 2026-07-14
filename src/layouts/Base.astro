@@ -3,7 +3,7 @@ import Head from "../components/Head.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
-import "../styles/syntax.css"
+import "../styles/syntax.css";
 ---
 
 <!doctype html>
@@ -14,14 +14,14 @@ import "../styles/syntax.css"
   <body>
     <Header />
     <div class="application">
-    <slot />
+      <slot />
     </div>
     <Footer />
   </body>
 </html>
 
 <style>
-  .application{
+  .application {
     min-height: 95vh;
   }
 </style>

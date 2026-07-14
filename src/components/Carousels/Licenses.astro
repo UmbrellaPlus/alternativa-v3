@@ -1,0 +1,12 @@
+---
+import Carousel from "../Carousels/Carousel.astro"
+
+import slide1 from "../../assets/carousels/licenses/license1.webp";
+import slide2 from "../../assets/carousels/licenses/license2.webp";
+import slide3 from "../../assets/carousels/licenses/license3.webp";
+import slide4 from "../../assets/carousels/licenses/license4.webp";
+
+const slides = [slide1, slide2, slide3, slide4];
+---
+
+<Carousel title="Ліцензії та сертифікати", {slides}/>

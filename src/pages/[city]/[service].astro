@@ -19,10 +19,26 @@ const { Content } = await render(service);
 ---
 
 <Base>
+  <div class="content">
   <h1>{service.data.title}</h1>
   <div>
     <p>Дата створення: {service.data.created?.toLocaleDateString("uk-UK", {dateStyle: "medium"})}</p>
     <p>Останнє оновлення: {service.data.lastmod?.toLocaleDateString("uk-UK", {dateStyle: "medium"})}</p>
   </div>
   <Content />
+</div>
 </Base>
+
+<style>
+  .content {
+    min-height: 95vh;
+    width: 95vw;
+    margin: auto;
+  }
+  @media (min-width: 768px) {
+    .content {
+      width: 50vw;
+    }
+  }
+</style>
+

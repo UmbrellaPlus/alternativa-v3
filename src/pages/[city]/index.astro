@@ -17,12 +17,33 @@ const { city } = Astro.props;
 ---
 
 <Base>
-  <h1>{city.data.title}</h1>
-  <ul>
-    {services.filter((service) => service.id.split("/")[0] == city.id).map(service => (
-      <li>
-        <a href={`/${city.id}/${service.id.split("/")[1]}/`}>{service.data.title}</a>
-      </li>
-    ))}
-  </ul>
+  <div class="content">
+    <h1>{city.data.title}</h1>
+    <ul>
+      {
+        services
+          .filter((service) => service.id.split("/")[0] == city.id)
+          .map((service) => (
+            <li>
+              <a href={`/${city.id}/${service.id.split("/")[1]}/`}>
+                {service.data.title}
+              </a>
+            </li>
+          ))
+      }
+    </ul>
+  </div>
 </Base>
+
+<style>
+  .content {
+    min-height: 95vh;
+    width: 95vw;
+    margin: auto;
+  }
+  @media (min-width: 768px) {
+    .content {
+      width: 50vw;
+    }
+  }
+</style>

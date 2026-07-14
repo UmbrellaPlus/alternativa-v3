@@ -3,8 +3,11 @@ import Base from "../layouts/Base.astro";
 import Hero from "../components/Hero.astro";
 import Deal from "../components/Deal.astro";
 import Services from "../components/Services.astro";
-import Carousel from "../components/Carousels/Carousel.astro"
+import Doctors from "../components/Carousels/Doctors.astro"
+import Licenses from "../components/Carousels/Licenses.astro";
 import WhereWeWork from "../components/WhereWeWork.astro";
+import Messengers from "../components/Messengers.astro";
+import ContactsUs from "../components/ContactsUs.astro";
 
 import Content from "../content/mainPages/home.md";
 import { getEntry } from "astro:content";
@@ -30,8 +33,11 @@ const frontmatter = home.data;
   />
   <Deal />
   <Services />
-  <Carousel />
+  <Doctors/>
   <WhereWeWork />
+  <Licenses/>
+  <Messengers />
+  <ContactsUs />
   <Content />
 </Base>
 
