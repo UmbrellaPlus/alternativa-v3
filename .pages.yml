@@ -31,6 +31,9 @@ content:
       - name: title
         label: Заголовок на странице
         type: string
+      - name: about
+        label: Описание на странице
+        type: string
       - name: body
         type: rich-text
       - name: created
