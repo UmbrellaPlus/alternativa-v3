@@ -16,6 +16,7 @@ const services = defineCollection({
       title: z.string(),
       created: z.date().optional(),
       lastmod: z.date().optional(),
+      about: z.string().optional(),
       image: image(),
     }),
 });

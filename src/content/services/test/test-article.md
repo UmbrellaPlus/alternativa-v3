@@ -2,7 +2,7 @@
 title: Собственно тестовая статья
 created: 2026-07-02
 lastmod: 2026-07-02
-image: ../../../assets/logo.png
+image: ../../../assets/images/home/hero.webp
 about: For testing purpases only
 ---
 
@@ -49,7 +49,7 @@ _You **can** combine them_
 
 ## Images
 
-![This is an alt text.](/image/Markdown-mark.svg "This is a sample image.")
+![This is an alt text.](/src/assets/logo.png "This is a sample image.")
 
 ## Links
 
