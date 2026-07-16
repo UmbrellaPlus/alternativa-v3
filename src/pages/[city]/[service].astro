@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import Base from "../../layouts/Base.astro";
+import Hero from "../../components/Hero.astro";
 
 export async function getStaticPaths() {
   const cities = await getCollection("services");
@@ -19,16 +20,33 @@ const { Content } = await render(service);
 ---
 
 <Base>
+  <Hero
+    title={service.data.title}
+    ,
+    image={service.data.image}
+    ,
+    about="Just smth"
+  />
   <div class="content">
-  <h1>{service.data.title}</h1>
-  <div>
-    <p>Дата створення: {service.data.created?.toLocaleDateString("uk-UK", {dateStyle: "medium"})}</p>
-    <p>Останнє оновлення: {service.data.lastmod?.toLocaleDateString("uk-UK", {dateStyle: "medium"})}</p>
+    <div>
+      <p>
+        Дата створення: {
+          service.data.created?.toLocaleDateString("uk-UK", {
+            dateStyle: "medium",
+          })
+        }
+      </p>
+      <p>
+        Останнє оновлення: {
+          service.data.lastmod?.toLocaleDateString("uk-UK", {
+            dateStyle: "medium",
+          })
+        }
+      </p>
+    </div>
+    <Content />
   </div>
-  <Content />
-</div>
 </Base>
-
 <style>
   .content {
     min-height: 95vh;
@@ -41,4 +59,3 @@ const { Content } = await render(service);
     }
   }
 </style>
-

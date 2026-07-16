@@ -9,4 +9,9 @@ button {
   border: 1px solid black;
   padding: 0.5rem;
   cursor: pointer;
+
+  &:hover{
+    background-color: darkgrey;
+    transition: 0.3s ease-in;
+  }
 }

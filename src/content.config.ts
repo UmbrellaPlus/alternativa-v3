@@ -11,24 +11,27 @@ const cities = defineCollection({
 
 const services = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/services" }),
-  schema: z.object({
-    title: z.string(),
-    created: z.date().optional(),
-    lastmod: z.date().optional()
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      created: z.date().optional(),
+      lastmod: z.date().optional(),
+      image: image(),
+    }),
 });
 
 const mainPages = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/mainPages" }),
-  schema: ({image}) => z.object({
-    title: z.string(),
-    hero: z.object({
-      header: z.string(),
-      about: z.string(),
-      image: image(),
-      imageText: z.string()
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      hero: z.object({
+        header: z.string(),
+        about: z.string(),
+        image: image(),
+        imageText: z.string(),
+      }),
     }),
-  }),
 });
 
 export const collections = { cities, services, mainPages };

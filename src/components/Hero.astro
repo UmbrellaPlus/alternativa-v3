@@ -1,7 +1,13 @@
 ---
 import { Image } from "astro:assets";
+import location from "../assets/components/hero/location.png";
 
-const { title, about, image, imageText } = Astro.props;
+import nurse from "../assets/components/hero/nurse.png";
+import ambulance from "../assets/components/hero/ambulance.png";
+import shield from "../assets/components/hero/shield.png";
+import individual from "../assets/components/hero/individuality.png";
+
+const { title, about, image } = Astro.props;
 ---
 
 <div class="hero">
@@ -9,28 +15,62 @@ const { title, about, image, imageText } = Astro.props;
     <div class="hero-title">
       <h1>{title}</h1>
       <p><b>{about}</b></p>
+      <div class="hero-location">
+        <img src={location.src} alt="location" /><div>
+          <p>Харків та Харківська область</p>
+          <u>Обрати місто та область</u>
+        </div>
+      </div>
     </div>
     <div class="hero-statements">
       <button>Написати нам в месседжер</button>
       <button>Зателефонуйте мені терміново</button>
-      <div><p>Анонімно і конфеденційно</p></div>
-      <div><p>Досвідчені лікарі з ліцензіями</p></div>
-      <div><p>Будемо у вас до години</p></div>
-      <div><p>Індивідуальний підхід до лікування</p></div>
+      <div class="hero-statements-specs">
+        <p>Анонімно і конфеденційно</p><img src={shield.src} alt="" />
+      </div>
+      <div class="hero-statements-specs">
+        <p>Досвідчені лікарі з ліцензіями</p><img src={nurse.src} alt="" />
+      </div>
+      <div class="hero-statements-specs">
+        <p>Будемо у вас до години</p><img src={ambulance.src} alt="" />
+      </div>
+      <div class="hero-statements-specs">
+        <p>Індивідуальний підхід до лікування</p><img
+          src={individual.src}
+          alt=""
+        />
+      </div>
     </div>
   </div>
   <div class="hero-imagePart">
-    <Image src={image} alt="{imageText}" />
+    <Image src={image} alt="Temporary plug" />
   </div>
 
   <style>
-    .hero{
+    .hero {
       width: 95%;
       margin: auto;
+    }
+    .hero-textPart{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     .hero-title {
       display: flex;
       flex-direction: column;
+    }
+    .hero-location {
+      display: flex;
+      padding: 0.5rem;
+      img {
+        width: 1rem;
+        height: 1rem;
+      }
+      u {
+        font-size: 0.8rem;
+        cursor: pointer;
+      }
     }
     .hero-statements {
       display: grid;
@@ -38,10 +78,25 @@ const { title, about, image, imageText } = Astro.props;
       grid-template-rows: repeat(6, 1fr);
       gap: 0.75rem;
     }
+    .hero-statements-specs {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      p{
+        padding: 0 .5rem;
+      }
+
+      img {
+        padding: .5rem;
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+    }
     .hero-statements div {
       border: 1px solid grey;
       border-radius: 0.5rem;
-      padding: .25rem 0;
+      padding: 0.25rem 0;
     }
     .hero-imagePart {
       display: none;
@@ -50,25 +105,34 @@ const { title, about, image, imageText } = Astro.props;
       .hero {
         display: flex;
         width: 50%;
+        justify-content: space-between;
+        height: 22.5rem;
       }
       .hero-textPart {
+        flex: 2;
         margin-right: 1rem;
-        flex: 3;
+        height: 22.5rem;
       }
       .hero-statements {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(3, 1fr);
       }
-      .hero-imagePart {
+      .hero-imagePart {;
         display: block;
+        width: 100%;
+        height: 22.5rem;
         flex: 1;
       }
       .hero-imagePart img {
-        max-width: 20vw;
         height: 100%;
-        object-fit: cover;
+        object-fit:cover;
         border-radius: 1rem;
       }
     }
   </style>
 </div>
+
+<script>
+  let res = await fetch("https://free.freeipapi.com/api/json");
+  console.log(res.json());
+</script>

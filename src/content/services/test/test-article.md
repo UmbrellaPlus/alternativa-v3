@@ -2,6 +2,8 @@
 title: Собственно тестовая статья
 created: 2026-07-02
 lastmod: 2026-07-02
+image: ../../../assets/logo.png
+about: For testing purpases only
 ---
 
 # Markdown syntax guide або Тест
